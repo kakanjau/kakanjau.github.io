@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta viewport="content=">
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <title>Kakanjau.GitHub.io by kakanjau</title>
+    <script type="text/javascript" src="libs/markdown/marked.js"></script>
+
+    <script type="text/javascript" src="libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="libs/angular/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="libs/angular/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="libs/angular/angular-local-storage.min.js"></script>
+
+    <!-- mock service -->
+    <script type="text/javascript" src="libs/mock/mock.js"></script>
+    <script type="text/javascript" src="libs/mock/mockData.js"></script>
+    <script type="text/javascript" src="libs/mock/mock.angular.js"></script>
+
+    <script type="text/javascript" src="javascripts/directives/console.js"></script>
+    <script type="text/javascript" src="javascripts/main.js"></script>
+
+    <script type="text/javascript" src="javascripts/controllers/basicCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/commonCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/blogCtrl.js"></script>
+    <script type="text/javascript" src="javascripts/controllers/manageCtrl.js"></script>
+
+
+    <title>kakanjau</title>
   </head>
 
-  <body>
-
+  <body ng-app="kaka.cblog" ng-controller="BasicCtrl" ng-keypress="pressKey($event)">
     <header>
       <div class="container">
-        <h1>Kakanjau.GitHub.io</h1>
-        <h2>乔卡卡的飞仙阁</h2>
-
-        <section id="downloads">
-          <a href="https://github.com/kakanjau" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
+        <h1>kakanjau.GitHub.io</h1>
+        <a href="https://github.com/kakanjau" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
       </div>
     </header>
 
-    <div class="container">
-      <section id="main_content">
-        <h1>
-<a id="kakanjaugithubio" class="anchor" href="#kakanjaugithubio" aria-hidden="true"><span class="octicon octicon-link"></span></a>kakanjau.github.io</h1>
-      </section>
+    <div class="container" ng-controller="CommonCtrl" ng-show="type=='common'"  ng-keypress="pressKey($event)">
+      <div style="min-height:100px;width:100%;">
+        <div ng-repeat="stream in screenStreams" ng-bind-html="stream"></div>
+        <ul>
+          <li>
+            <a href="/blog">我的博客</a>
+          </li>
+          <li>
+            <a href="/angular-adminlte-plugin">angular-adminlte-plugin</a>
+          </li>
+        </ul>
+      </div>
+      <console></console>
     </div>
+
+    <div class="container cli" ng-controller="BlogCtrl" ng-show="type=='blog'">
+      <span style="color:#b5e853">></span>
+      <input type="text" class="console" autofocus="autofocus">
+    </div>
+
+    <!--<div class="container" ng-controller="ManageCtrl" ng-show="type=='manage'">
+      <span style="color:#b5e853">></span>
+      <input type="text" class="console" autofocus="autofocus">
+    </div>-->
 
     
   </body>

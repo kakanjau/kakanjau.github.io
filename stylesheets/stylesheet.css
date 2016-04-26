@@ -4,6 +4,8 @@ body {
   background: #151515 url("../images/bkg.png") 0 0;
   color: #eaeaea;
   font: 16px;
+  max-width: 1024px;
+  margin: 0 auto;
   line-height: 1.5;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
@@ -12,8 +14,29 @@ body {
 
 .container {
   width: 90%;
+  margin: 0 auto;
+}
+
+.container.cli {
+  position: absolute;
+  bottom: 10px;
+}
+
+header .container {
   max-width: 600px;
   margin: 0 auto;
+}
+
+.container .console {
+  width: 90%;
+  background-color: inherit;
+  color: #b5e853;
+  border:0;
+  border-bottom: 1px solid #b5e853; 
+}
+
+.container .console:focus, .container > .console:active {
+  outline: 0;
 }
 
 section {
@@ -44,6 +67,7 @@ header {
 }
 
 header h1 {
+  display: inline-block;
   font-size: 30px;
   line-height: 1.5;
   margin: 0 0 0 -40px;
