@@ -1,17 +1,12 @@
-angular.module('kaka.cblog').controller('CommonCtrl', ['$scope', 
-  function($scope){
-    $scope.pressKey = function(event){
-      var code = event.keyCode;
-      switch(code){
-        // 处理案件：回车
-        case 13: excute(); break;
-        // 处理按键：上
-        case 38: prev(); break;
-        // 处理案件：下
-        case 40: next(); break;
-      }
-      event.preventDefault();
-      event.stopPropagation();
-    };
+angular.module('kaka.cblog').controller('CommonCtrl', ['$scope', '$timeout','BlogCmd',
+  function($scope, $timeout){
+    $scope.screenStreams = [];
+    $scope.height = document.documentElement.clientHeight - 10;
+    $scope.$on('push-result', function(evt, data) {
+      $scope.screenStreams.push(data);
+      $timeout(function(){
+        document.querySelector('.container input').scrollIntoView();
+      }, 0);
+    });
   }
 ]);

@@ -1,6 +1,7 @@
 (function(){
   var app = angular.module("kaka.cblog", ["ui.router", "ngSanitize", "LocalStorageModule", "kaka.console"]);
 
+  angular.module("kaka.console", []);
   // app.config(function($stateProvider, $urlRouterProvider, localStorageServiceProvider){
   //   $stateProvider
   //     .state("Basic", {
