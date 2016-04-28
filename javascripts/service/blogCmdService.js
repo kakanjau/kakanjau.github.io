@@ -21,12 +21,40 @@
     }
     
     function list() {
-      return $http.get('/blog/articles/index.json');
+      return $http.get('/blog/articles/index.json').then(function(result){
+        var articles = treeToList(result.data);
+        var ret = [];
+        angular.forEach(articles, function(article){
+          if(!article.isBranch){
+            ret.push('<a href="/blog/#/article/' + article.name + '" target="_blank">' + article.name + '</a>');
+          }
+        });
+        return ret.join('<br>');
+      });
     }
     
     function show() {
       
     }
+    
+    function treeToList(tree){
+      var list = [];
+      var call = (list, nodes, parent) => {
+        for (var node of nodes) {
+          var children = node.children;
+          node.parent = parent;
+          node.level = parent ? (parent.level + 1) : 0;
+          node.chilren = null;
+          list.push(node);
+          if (children) {
+            node.isBranch = true;
+            call(list, children, node);
+          }
+        }
+      };
+      call(list, tree);
+      return list;
+    };
     return service;
   }]);
 })();
