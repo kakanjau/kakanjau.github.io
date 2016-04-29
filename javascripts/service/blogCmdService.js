@@ -74,7 +74,7 @@
     
     function treeToList(tree){
       var list = [];
-      var call = (list, nodes, parent) => {
+      var call = function(list, nodes, parent){
         for (var node of nodes) {
           var children = node.children;
           node.parent = parent;
