@@ -54,7 +54,7 @@ body {
 }
 .container .console input {
   width: 100%;
-  background-color: inherit;
+  background: none;
   color: #b5e853;
   border: none;
   font-size: 14px;
