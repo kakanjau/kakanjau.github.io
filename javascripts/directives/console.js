@@ -20,9 +20,18 @@
               });
             }
           }
+          // 获取下一个已经执行过的命令
+          else if(code == 40) {
+            $scope.command = CliService.getNextCommand();
+          }
+          // 获取上一个已经执行过的命令
+          else if(code == 38) {
+            var historyCom = CliService.getPrevCommand();
+            $scope.command = historyCom !== undefined ? historyCom : $scope.command;
+          }
         }
       },
-      template: '<p><div class="console" ><input type="text" autofocus="autofocus" ng-model="command" ng-keypress="keypress($event)"></div><span style="color:#b5e853;float:left;">kakanjau.GitHub.io$&nbsp;</span></p>'
+      template: '<p><div class="console" ><input type="text" autofocus="autofocus" ng-model="command" ng-keydown="keypress($event)"></div><span style="color:#b5e853;float:left;">kakanjau.GitHub.io$&nbsp;</span></p>'
     }
   }]);
 
