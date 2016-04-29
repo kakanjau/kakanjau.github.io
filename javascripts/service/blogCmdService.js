@@ -3,11 +3,14 @@
   
   app.service('BlogCmd', ['$http', 'CliService', function($http, CliService){
     var service;
+    var articleList;
     CliService.registerCommand('blog', blog);
     
     function blog(args, options) {
       if(args.list){
         return list();
+      }else if(args.show){
+        return show(args.show)
       }else{
         return help();
       }
@@ -22,9 +25,9 @@
     
     function list() {
       return $http.get('/blog/articles/index.json').then(function(result){
-        var articles = treeToList(result.data);
+        articleList = treeToList(result.data);
         var ret = [];
-        angular.forEach(articles, function(article){
+        angular.forEach(articleList, function(article){
           if(!article.isBranch){
             ret.push('<a href="/blog/#/article/' + article.name + '" target="_blank">' + article.name + '</a>');
           }
@@ -33,8 +36,40 @@
       });
     }
     
-    function show() {
-      
+    function show(name) {
+      var article;
+      if(articleList){
+        angular.forEach(articleList, function(art){
+          if(art.name === name) {
+            article = art;
+          }
+        });      
+        if(article.content) {
+          return marked(article.content);
+        }else{
+          return $http.get(getArticlePath(article)).success(function(data){
+            article.content = data;
+            return marked(article.content);
+          })
+        }
+      }else {
+        return $http.get('/blog/articles/index.json').then(function(result){
+          articleList = treeToList(result.data);
+          angular.forEach(articleList, function(art){
+            if(art.name === name) {
+              article = art;
+            }
+          });      
+          if(article.content) {
+            return marked(article.content);
+          }else{
+            return $http.get(getArticlePath(article)).success(function(data){
+              article.content = data;
+              return marked(article.content);
+            })
+          }
+        });
+      }
     }
     
     function treeToList(tree){
@@ -55,6 +90,18 @@
       call(list, tree);
       return list;
     };
+    
+    function getArticlePath(article){
+      var path = [article.name];
+      var ext = article.fileExt;
+      while(article.parent) {
+        path.unshift(article.parent.name);
+        article = article.parent;
+      }
+      path.unshift('/blog/articles');
+      return path.join('/') + '.' + ext;
+    }
+    
     return service;
   }]);
 })();
