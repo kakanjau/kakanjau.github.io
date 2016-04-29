@@ -75,7 +75,7 @@
     function treeToList(tree){
       var list = [];
       var call = function(list, nodes, parent){
-        for (var node of nodes) {
+        angular.forEach(nodes, function(node){
           var children = node.children;
           node.parent = parent;
           node.level = parent ? (parent.level + 1) : 0;
@@ -85,7 +85,7 @@
             node.isBranch = true;
             call(list, children, node);
           }
-        }
+        });
       };
       call(list, tree);
       return list;
