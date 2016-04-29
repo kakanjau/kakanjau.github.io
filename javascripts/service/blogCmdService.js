@@ -47,8 +47,8 @@
         if(article.content) {
           return marked(article.content);
         }else{
-          return $http.get(getArticlePath(article)).success(function(data){
-            article.content = data;
+          return $http.get(getArticlePath(article)).then(function(result){
+            article.content = result.data;
             return marked(article.content);
           })
         }
@@ -63,8 +63,8 @@
           if(article.content) {
             return marked(article.content);
           }else{
-            return $http.get(getArticlePath(article)).success(function(data){
-              article.content = data;
+            return $http.get(getArticlePath(article)).then(function(result){
+              article.content = result.data;
               return marked(article.content);
             })
           }
