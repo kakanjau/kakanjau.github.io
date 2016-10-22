@@ -46,6 +46,9 @@ body {
   color: #b5e853;
   overflow: auto;
 }
+console {
+  display: block;
+}
 .container .console {
   width: 700px;
   margin-left: -200px;
