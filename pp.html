@@ -2,9 +2,8 @@
 <html>
   <body>
     <script>
-      window.location = 'pptvsports://page/home';
-      //window.location = 'openapp://com.pplive.androidphone.sport://page/live/detail/?section_id=134149';
-      //alert(navigator.userAgent);
-    </script>
+      window.onbeforeunload = function checkLeave(){   
+　event.returnValue="离开当前页面将会失去领的卡片!";   
+}     </script>
   </body>
 </html>
