@@ -1,9 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <body>
-    <script>
-      window.onbeforeunload = function checkLeave(){   
-　event.returnValue="离开当前页面将会失去领的卡片!";   
-}     </script>
-  </body>
+<head>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body onbeforeunload="return myFunction()">
+<p>该实例演示了如何向 body 元素添加 "onbeforeunload" 事件。</p>
+<p>关闭当前窗口，按下 F5 或点击以下链接触发 onbeforeunload 事件。</p>
+<a href="http://www.qqtimezone.top">博客地址</a>  
+<script>
+function myFunction() {
+ return "自定义内容";
+}
+</script>
+</body>
 </html>
