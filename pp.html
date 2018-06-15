@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
 </head>
-<body onbeforeunload="return myFunction()">
-<p>该实例演示了如何向 body 元素添加 "onbeforeunload" 事件。</p>
-<p>关闭当前窗口，按下 F5 或点击以下链接触发 onbeforeunload 事件。</p>
-<a href="http://www.qqtimezone.top">博客地址</a>  
-<script>
-function myFunction() {
- return "自定义内容";
-}
-</script>
+<body>
+  <div ontouchstart="alert('touch')"></div>
 </body>
 </html>
