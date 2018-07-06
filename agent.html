@@ -1,11 +1,15 @@
 <!doctype html>
 <html>
   <body>
+    <p id='ua'></p>
+    <p id='cookie'></p>
     <script>
       // window.location = 'pptvsports://';
       //window.location = 'openapp://com.pplive.androidphone.sport://page/live/detail/?section_id=134149';
       alert(navigator.userAgent);
       alert(document.cookie);
+      document.querySelector('#ua').innerHtml = 'userAgent:' + navigator.userAgent;
+      document.querySelector('#cookie').innerHtml = 'cookie:' + document.cookie;
     </script>
   </body>
 </html>
