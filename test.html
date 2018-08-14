@@ -13,6 +13,41 @@
   </style>
 </head>
 <body>
-  <div ontouchstart="alert('touch')"></div>
+  <script>
+  function getMemberInfo() {
+
+    if (window.SNNativeClient.getMemberInfo) {
+
+        window.SNNativeClient.getMemberInfo(
+
+            function callback(message){
+
+                window.SNNativeClient.showTip(JSON.stringify(message))
+
+            }
+
+        )
+
+  }
+    function doShareURL(){
+
+var appType = document.getElementById("isshareurl").value;
+
+var title = document.getElementById("isshareurl").title;
+
+var context = document.getElementById("isshareurl").text;
+
+var shareimg = document.getElementById("isshareurl").alt;
+
+var result =  appType +","+ title+","+context+ ","+shareimg;  
+
+shareApi.saveShareInfo(result);
+
+}
+
+}
+  </script>
+  <input type="hidden" id="isshareurl" title="hhh" value="1">lalalala</input>
+<a onclick="getMemberInfo()">获取会员信息</a>
 </body>
 </html>
