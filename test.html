@@ -27,9 +27,15 @@
             }
 
         )
+    } else if (window.baseApi) {
+      baseApi.memberInfo(function(memInfo){
 
-  }
-    function doShareURL(){
+        alert(memInfo);
+
+      });
+    }
+ }
+function doShareURL(){
 
 var appType = '1';
 
@@ -42,8 +48,6 @@ var shareimg = '';
 var result =  appType +","+ title+","+context+ ","+shareimg;  
 
 shareApi.saveShareInfo(result);
-
-}
 
 }
   </script>
