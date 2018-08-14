@@ -16,13 +16,13 @@
   <script>
   function getMemberInfo() {
 
-    if (window.SNNativeClient.getMemberInfo) {
+    if (window.SNNativeClient && window.SNNativeClient.getMemberInfo) {
 
         window.SNNativeClient.getMemberInfo(
 
             function callback(message){
 
-                window.SNNativeClient.showTip(JSON.stringify(message))
+                alert(message);
 
             }
 
@@ -31,13 +31,13 @@
   }
     function doShareURL(){
 
-var appType = document.getElementById("isshareurl").value;
+var appType = '1';
 
-var title = document.getElementById("isshareurl").title;
+var title = 'lll';
 
-var context = document.getElementById("isshareurl").text;
+var context = 'hhhhh';
 
-var shareimg = document.getElementById("isshareurl").alt;
+var shareimg = '';
 
 var result =  appType +","+ title+","+context+ ","+shareimg;  
 
@@ -47,7 +47,7 @@ shareApi.saveShareInfo(result);
 
 }
   </script>
-  <input type="hidden" id="isshareurl" title="hhh" value="1">lalalala</input>
+  <input type="hidden" id="isshareurl" title="hhh" value="1"/>
 <a onclick="getMemberInfo()">获取会员信息</a>
 </body>
 </html>
