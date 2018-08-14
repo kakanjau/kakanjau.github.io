@@ -15,23 +15,19 @@
 <body>
   <script>
   function getMemberInfo() {
-
+    alert('in getMemberInfo');
     if (window.SNNativeClient && window.SNNativeClient.getMemberInfo) {
-
+        alert('in ios');
         window.SNNativeClient.getMemberInfo(
-
             function callback(message){
-
                 alert(message);
-
             }
-
         )
     } else if (window.baseApi) {
+      alert('in android');
       baseApi.memberInfo(function(memInfo){
-
+        alert('in callback');
         alert(memInfo);
-
       });
     }
  }
