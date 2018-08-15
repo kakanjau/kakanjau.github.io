@@ -17,6 +17,13 @@
   <script>
   function getMemberInfo() {
     alert('in getMemberInfo');
+    if (window.SNNativeClient && window.SNNativeClient.getUserLevel) {
+        window.SNNativeClient.getUserLevel(
+            function callback(message){
+                alert(JSON.stringify(message))
+            }
+        )
+    }
     if (window.SNNativeClient && window.SNNativeClient.getMemberInfo) {
         alert('in ios');
         window.SNNativeClient.getMemberInfo(
