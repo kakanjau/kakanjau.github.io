@@ -21,7 +21,7 @@
         alert('in ios');
         window.SNNativeClient.getMemberInfo(
             function callback(message){
-                alert(message);
+                alert(JSON.stringify(message));
             }
         )
     } else if (window.baseApi) {
